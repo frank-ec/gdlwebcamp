@@ -1,3 +1,38 @@
+var api= 'AIzaSyBMe5zzwFKSjWktOY1BaJz79oARGaC4k9Q';
+
+      function initMap() {
+        var latlng ={
+            lat: 0.035634,
+            lng: -78.150042
+        }
+        var map = new google.maps.Map(document.getElementById('mapa'), {
+          'center': latlng,
+          'zoom': 14,
+          'mapTypeId': google.maps.MapTypeId.HYBRID
+        });
+
+        var contenido='<h2>HBC</h2>'+
+                      '<p>Del 10 al 12 de Diciembre</p>' +
+                      '<p>Visitanos</p>'
+
+        var informacion = new google.maps.InfoWindow({
+            content:contenido
+        });
+
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: 'HOSPITAL BASICO CAYAMBE'
+        });
+
+        marker.addListener('click', function(){
+            informacion.open(map, marker)
+        });
+
+      }
+        
+
+
 (function(){
   'use strict';
   document.addEventListener('DOMContentLoaded', function(){
