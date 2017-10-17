@@ -193,11 +193,12 @@ var api= 'AIzaSyBMe5zzwFKSjWktOY1BaJz79oARGaC4k9Q';
 })();
 
 
-
-// Programa de Conferencias
-
 $(function(){
+
+    //  Lettering
+    $('.nombre-sitio').lettering();
     
+    // Programa de Conferencias
     $('div.ocultar').hide(); //Oculta Talleres, Conferencias y Seminarios
     $('.programa-evento .info-curso:first').show(); //Muestra los talleres
     $('.menu-programa a:first').addClass('activo');
