@@ -65,7 +65,7 @@
 
                 <nav class="navegacion-principal clearfix">
                     <a href="conferencia.php">Ferias de Salud</a>
-                    <a href="#">Calendarios</a>
+                    <a href="calendario.php">Calendarios</a>
                     <a href="invitados.php">Invitados</a>
                     <a href="registro.php">Reserva Turnos</a>
                 </nav>
