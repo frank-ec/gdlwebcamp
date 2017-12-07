@@ -21,7 +21,31 @@
         <div class="calendario">
           
            <?php while($eventos = $resultado->fetch_all(MYSQLI_ASSOC)){?>
-                    <?php foreach ($eventos as $evento): ?>
+              <?php // Creacion de array vacio para extraer los dias de la BD
+                    $dias = array();?>
+                    <?php foreach ($eventos as $evento){
+                        $dias[] = $evento['fecha_evento'];
+                        } ?>
+
+                     <?php // Reasignamos el valor de la variable
+                              $dias= array_values(array_unique($dias)) ?> 
+                     <?php // Creamos un contador 
+                               $contador = 0; ?> 
+                    <?php foreach($eventos as $evento): ?>
+                        
+                         <?php $dia_actual = $evento['fecha_evento'];?> 
+
+                         <?php if($dia_actual == $dias[$contador]):?> 
+                            <h3>
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                              <?php echo $evento['fecha_evento'];?>
+                            </h3>
+                            <?php $contador++; ?>
+                            <?php if($contador==3): ?>
+                            <?php $contador =0; ?>
+                            <?php endif; ?>
+                         <?php endif;?> 
+
                     <div class="dia">
                          <p class="titulo"> <?php echo utf8_encode($evento['nombre_evento']); ?> </p>
                          <p class="hora"><i class="fa fa-clock-o" aria-hidden="true"></i><?php echo $evento['fecha_evento']. " ".$evento['hora_evento']. " hrs" ; ?></p> 
@@ -48,22 +72,10 @@
                                 <?php echo $evento['nombre_invitado']. " ".$evento['apellido_invitado']; ?>      
                              </p>
                     </div>                          
-                    <?php endforeach;?>  
-
-                        <pre>
-                          <?php var_dump($evento); ?>
-                        </pre>
-
-                      
-          <?php } ?>
+                    <?php endforeach;?>                     
+            <?php } ?>
          </div>   <!-- Fin de calenario -->
-
-              <pre>
-                <?php var_dump($eventos);?>
-              </pre>
-
-            
-         
+         <?php $conn->close();?>          
          </section>              
 
 <?php include_once "includes/templates/footer.php" ;?>
