@@ -13,10 +13,20 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet"> 
+            <?php
+                $archivo = basename($_SERVER['PHP_SELF']);
+                $pagina = str_replace(".php", "",$archivo);
+                if ($pagina == "invitados" || $pagina == "index") {
+                    echo '<link rel="stylesheet" href="css/colorbox.css">';
+                }elseif ($pagina == "conferencia") {
+                    echo '<link rel="stylesheet" href="css/lightbox.css">';
+                }
+             ?>
+                
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body>
+    <body class="<?php echo $pagina ;?>">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -64,10 +74,10 @@
                 </div>
 
                 <nav class="navegacion-principal clearfix">
-                    <a href="conferencia.php">Ferias de Salud</a>
-                    <a href="calendario.php">Calendarios</a>
+                    <a href="conferencia.php">Conferencia</a>
+                    <a href="calendario.php">Calendario</a>
                     <a href="invitados.php">Invitados</a>
-                    <a href="registro.php">Reserva Turnos</a>
+                    <a href="registro.php">Reservaciones</a>
                 </nav>
 
             </div> <!--fin Contenedor -->

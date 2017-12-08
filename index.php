@@ -74,48 +74,9 @@
                 </div> <!-- contenedor  -->
             </div> <!-- contenido-programa  -->
         </section> <!-- seccion programa -->
-        <section class="innvitados contenedor seccion">
-            <h2>Nuestros Invitados</h2>
-            <ul class="lista-invitados clearfix">
-                <li>
-                        <div class="invitado">
-                            <img src="img/invitado1.jpg" alt="imagen invitado">
-                            <p>Rafael B</p>
-                        </div>
-                </li>                
-                 <li>
-                        <div class="invitado">
-                            <img src="img/invitado2.jpg" alt="imagen invitado">
-                            <p>Shari Herrera</p>
-                        </div>
-                </li> 
-                 <li>
-                        <div class="invitado">
-                            <img src="img/invitado3.jpg" alt="imagen invitado">
-                            <p>Gregorio G</p>
-                        </div>
-                </li> 
-                 <li>
-                        <div class="invitado">
-                            <img src="img/invitado4.jpg" alt="imagen invitado">
-                            <p>Susana R</p>
-                        </div>
-                </li> 
-                 <li>
-                        <div class="invitado">
-                            <img src="img/invitado5.jpg" alt="imagen invitado">
-                            <p>Harold G</p>
-                        </div>
-                </li> 
-                 <li>
-                        <div class="invitado">
-                            <img src="img/invitado6.jpg" alt="imagen invitado">
-                            <p>Susan S</p>
-                        </div>
-                </li> 
-            </ul>
-            
-        </section>
+        
+ <?php include_once "includes/templates/invitados.php" ;?> 
+
         <div class="contador parallax">
             <div class="contenedor">
                 <ul class="resumen-evento clearfix">

@@ -197,6 +197,11 @@ $(function(){
 
     //  Lettering
     $('.nombre-sitio').lettering();
+    
+    // Agregar clase a menu de navegacion principal
+    $('body.conferencia .navegacion-principal a:contains("Conferencia")').addClass('activo') ;   
+    $('body.calendario .navegacion-principal a:contains("Calendario")').addClass('activo') ;   
+    $('body.invitados .navegacion-principal a:contains("Invitados")').addClass('activo') ;   
 
     // Meńu fijo
         var windowHeight = $(window).height();
@@ -254,6 +259,9 @@ $(function(){
         $('#horas').html(event.strftime('%H'));
         $('#minutos').html(event.strftime('%M'));
         $('#segundos').html(event.strftime('%S'));
-      });         
+      });
+      
+   // Colorbox
+        $('.invitado-info').colorbox ({inline:true, width:"50%"});            
 
 });
