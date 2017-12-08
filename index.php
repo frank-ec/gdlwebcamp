@@ -17,11 +17,57 @@
                 <div class="contenedor">
                     <div class="programa-evento">
                         <h2>Programa del Evento</h2>
+                         <?php
+                            try{
+                              require_once('includes/funciones/bd_conexion.php');
+                              $sql = "SELECT * FROM `categoria_evento` " ;
+                              $resultado = $conn->query($sql);
+                              }catch (Exception $e){
+                              $error = $e->getMessage();  
+                              }
+                         ?>
+
                         <nav class="menu-programa">
-                            <a href="#talleres"><i class="fa fa-code" aria-hidden="true"></i>Talleres</a>
-                            <a href="#conferencias"><i class="fa fa-comment" aria-hidden="true"></i>Conferencias</a>
-                            <a href="#seminarios"><i class="fa fa-university" aria-hidden="true"></i>Seminarios</a>
+                           <?php while ($cat = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
+                                <?php $categoria = $cat['cat_evento']; ?>   
+                            <a href="#<?php echo strtolower($categoria);?> ">
+                                <i class="fa  <?php echo $cat['icono'] ?> " aria-hidden="true"></i> <?php echo $categoria ?>
+                            </a>
+                           <?php } ?> 
                         </nav>
+                            <?php
+                                try{
+                                  require_once('includes/funciones/bd_conexion.php');
+                                  $sql = "SELECT `evento_id`, `nombre_evento`, `fecha_evento`, `hora_evento`, `cat_evento`, `nombre_invitado`, `apellido_invitado` " ;
+                                  $sql .= "FROM `eventos` " ;
+                                  $sql .= "INNER JOIN `categoria_evento` " ;
+                                  $sql .= "ON eventos.id_cat_evento=categoria_evento.id_categoria ";
+                                  $sql .= "INNER JOIN `invitados` " ;
+                                  $sql .= "ON eventos.id_inv=invitados.invitado_id ";
+                                  $sql .= "AND eventos.id_categoria = 1";
+                                  $sql .= "ORDER BY `evento_id` LIMIT 2";
+                                  $sql = "SELECT `evento_id`, `nombre_evento`, `fecha_evento`, `hora_evento`, `cat_evento`, `nombre_invitado`, `apellido_invitado` " ;
+                                  $sql .= "FROM `eventos` " ;
+                                  $sql .= "INNER JOIN `categoria_evento` " ;
+                                  $sql .= "ON eventos.id_cat_evento=categoria_evento.id_categoria ";
+                                  $sql .= "INNER JOIN `invitados` " ;
+                                  $sql .= "ON eventos.id_inv=invitados.invitado_id ";
+                                  $sql .= "AND eventos.id_categoria = 2";
+                                  $sql .= "ORDER BY `evento_id` LIMIT 2";
+                                  $sql = "SELECT `evento_id`, `nombre_evento`, `fecha_evento`, `hora_evento`, `cat_evento`, `nombre_invitado`, `apellido_invitado` " ;
+                                  $sql .= "FROM `eventos` " ;
+                                  $sql .= "INNER JOIN `categoria_evento` " ;
+                                  $sql .= "ON eventos.id_cat_evento=categoria_evento.id_categoria ";
+                                  $sql .= "INNER JOIN `invitados` " ;
+                                  $sql .= "ON eventos.id_inv=invitados.invitado_id ";
+                                  $sql .= "AND eventos.id_categoria = 3";
+                                  $sql .= "ORDER BY `evento_id` LIMIT 2";
+
+                                  $resultado = $conn->query($sql);
+                                  }catch (Exception $e){
+                                  $error = $e->getMessage();  
+                                  }
+                             ?> 
                         <div id="talleres" class="info-curso ocultar clearfix">
                             <div class="detalle-evento">
                                 <h3> HTML5, CSS 3 y Javascript </h3>
@@ -74,7 +120,7 @@
                 </div> <!-- contenedor  -->
             </div> <!-- contenido-programa  -->
         </section> <!-- seccion programa -->
-        
+
  <?php include_once "includes/templates/invitados.php" ;?> 
 
         <div class="contador parallax">
